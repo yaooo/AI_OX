@@ -14,9 +14,13 @@ public class Node {
 		this.state = state;
 	}
 
-	public Node(Node parent, Action action, State state, int d, int v, int g) {
+	public Node(Node parent, Action action, State state, int depth){
 		this(parent, action, state);
-		this.depth = d;
+		this.depth = depth;
+	}
+
+	public Node(Node parent, Action action, State state, int d, int v, int g) {
+		this(parent, action, state, d);
 		this.value = v;
 		this.g = g;
 	}

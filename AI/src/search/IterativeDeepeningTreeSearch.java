@@ -25,8 +25,8 @@ public class IterativeDeepeningTreeSearch implements Search{
 			frontier.add(init);
 			this.depth ++; // increase the threshold
 
-			if (frontier.ifTimeOut(120)) {
-				System.out.println("Time out(120 seconds limit).");
+			if (frontier.ifTimeOut(60)) {
+				System.out.println("Time out(60 seconds limit).");
 				break;
 			}
 
@@ -44,8 +44,8 @@ public class IterativeDeepeningTreeSearch implements Search{
 					for (Action action : node.state.getApplicableActions()) {
 						State state = node.state.getActionResult(action);
 						int d = node.depth;
-						Node newNode = new Node(node, action, state, d + 1, 0, 0);
-						newNode.g = node.g + action.cost(node, newNode);
+						Node newNode = new Node(node, action, state, d + 1);
+//						newNode.g = node.g + action.cost(node, newNode);
 						frontier.add(newNode);
 					}
 				}
@@ -57,11 +57,11 @@ public class IterativeDeepeningTreeSearch implements Search{
 
 	@Override
 	public int maxNodesIntFrontier() {
-		return frontier.max;
+		return frontier.getMaxNodeInList();
 	}
 
 	@Override
 	public int nodeGenerated() {
-		return frontier.seen;
+		return frontier.getNodeGenerated();
 	}
 }

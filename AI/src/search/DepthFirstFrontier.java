@@ -11,8 +11,8 @@ public class DepthFirstFrontier extends Frontier{
 
         boolean t = this.frontier.add(node);
         if(t) {
-            this.seen++;
-            this.max = Math.max(max, frontier.size());
+            this.increaseNodeGenerated();
+            this.compareAndSetMaxNode(frontier.size());
         }
         return t;
     }

@@ -16,8 +16,6 @@ public class GraphSearch implements Search{
     public Node findSol(Node init, GoalTest goalTest) {
         frontier.clear();
         closedList.clear();
-        frontier.max=0;
-        frontier.seen=0;
 
         frontier.add(init);
         closedList.add(init.state);
@@ -25,7 +23,7 @@ public class GraphSearch implements Search{
         while(!frontier.isEmpty()){
             Node node = frontier.remove();
             if(goalTest.isGoal(node.state)){
-                PrintStats.printStats(frontier.max, frontier.seen);
+                PrintStats.printStats(maxNodesIntFrontier(), nodeGenerated());
                 return node;
             }
             else {
@@ -33,8 +31,8 @@ public class GraphSearch implements Search{
                     State state = node.state.getActionResult(action);
 
                     if(!closedList.contains((state))) {
-                        Node newNode = new Node(node, action, state, -1, 0, 0);
-                        newNode.g = node.g + action.cost(node, newNode);
+                        Node newNode = new Node(node, action, state, -1);
+//                        newNode.g = node.g + action.cost(node, newNode);
                         frontier.add(newNode);
                         closedList.add(state);
                     }
@@ -47,11 +45,11 @@ public class GraphSearch implements Search{
 
     @Override
     public int maxNodesIntFrontier() {
-        return frontier.max;
+        return frontier.getMaxNodeInList();
     }
 
     @Override
     public int nodeGenerated() {
-        return frontier.seen;
+        return frontier.getNodeGenerated();
     }
 }

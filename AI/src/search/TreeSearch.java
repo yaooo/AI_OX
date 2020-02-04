@@ -12,8 +12,7 @@ public class TreeSearch implements Search{
     @Override
     public Node findSol(Node init, GoalTest goalTest) {
         frontier.clear();
-        frontier.max=0;
-        frontier.seen=0;
+
         frontier.add(init);
         PrintStats.printSearchType(this.Type);
         while(!frontier.isEmpty()){
@@ -23,14 +22,14 @@ public class TreeSearch implements Search{
             }
             Node node = frontier.remove();
             if(goalTest.isGoal(node.state)){
-                PrintStats.printStats(frontier.max, frontier.seen);
+                PrintStats.printStats(maxNodesIntFrontier(), nodeGenerated());
                 return node;
             }
             else {
                 for(Action action: node.state.getApplicableActions()){
                     State state = node.state.getActionResult(action);
-                    Node newNode = new Node(node, action, state, -1, 0, 0);
-                    newNode.g = node.g + action.cost(node, newNode);
+                    Node newNode = new Node(node, action, state, -1);
+//                    newNode.g = node.g + action.cost(node, newNode);
                     frontier.add(newNode);
 //                    frontier.frontier.sort();
                 }
@@ -42,11 +41,11 @@ public class TreeSearch implements Search{
 
     @Override
     public int maxNodesIntFrontier() {
-        return frontier.max;
+        return frontier.getMaxNodeInList();
     }
 
     @Override
     public int nodeGenerated() {
-        return frontier.seen;
+        return frontier.getNodeGenerated();
     }
 }
