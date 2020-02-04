@@ -3,6 +3,8 @@ package search;
 public class BreadthFirstFrontier extends Frontier{
 
     public BreadthFirstFrontier(){
+        super();
+        clear();
     }
 
     public boolean add(Node node){

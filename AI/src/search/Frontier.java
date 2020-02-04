@@ -6,11 +6,13 @@ abstract class Frontier {
     LinkedList<Node> frontier;
     int max;
     int seen;
+    long timer;
 
     public Frontier(){
         frontier = new LinkedList<>();
         max = 0;
         seen = 0;
+        this.timer = System.currentTimeMillis();
     }
 
 
@@ -18,6 +20,7 @@ abstract class Frontier {
         frontier.clear();
         max = 0;
         seen = 0;
+        timer = System.currentTimeMillis();
     }
 
     String getType(){
@@ -28,6 +31,9 @@ abstract class Frontier {
         return frontier.isEmpty();
     }
 
+    boolean ifTimeOut(int seconds){
+        return System.currentTimeMillis() - timer > (long)seconds * 1000;
+    }
     abstract boolean add(Node node);
     abstract Node remove();
 }

@@ -16,6 +16,8 @@ public class GraphSearch implements Search{
     public Node findSol(Node init, GoalTest goalTest) {
         frontier.clear();
         closedList.clear();
+        frontier.max=0;
+        frontier.seen=0;
 
         frontier.add(init);
         closedList.add(init.state);

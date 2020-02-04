@@ -4,7 +4,6 @@ public class TreeSearch implements Search{
 
     private Frontier frontier;
     private String Type;
-
     public TreeSearch(Frontier f){
         this.frontier = f;
         this.Type = f.getType() + " Tree Search";
@@ -13,9 +12,15 @@ public class TreeSearch implements Search{
     @Override
     public Node findSol(Node init, GoalTest goalTest) {
         frontier.clear();
+        frontier.max=0;
+        frontier.seen=0;
         frontier.add(init);
         PrintStats.printSearchType(this.Type);
         while(!frontier.isEmpty()){
+            if(frontier.ifTimeOut(30)){
+                System.out.println("Time out(30 seconds limit).");
+                break;
+            }
             Node node = frontier.remove();
             if(goalTest.isGoal(node.state)){
                 PrintStats.printStats(frontier.max, frontier.seen);

@@ -3,6 +3,8 @@ package search;
 public class DepthFirstFrontier extends Frontier{
 
     public DepthFirstFrontier(){
+        super();
+        clear();
     }
 
     public boolean add(Node node) {
