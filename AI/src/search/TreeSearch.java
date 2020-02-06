@@ -28,10 +28,9 @@ public class TreeSearch implements Search{
             else {
                 for(Action action: node.state.getApplicableActions()){
                     State state = node.state.getActionResult(action);
-                    Node newNode = new Node(node, action, state, -1);
-//                    newNode.g = node.g + action.cost(node, newNode);
+                    Node newNode = new Node(node, action, state, -1, 0, 0);
+                    newNode.g = node.g + action.cost(node, newNode);
                     frontier.add(newNode);
-//                    frontier.frontier.sort();
                 }
             }
         }

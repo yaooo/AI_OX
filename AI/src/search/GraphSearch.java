@@ -31,8 +31,8 @@ public class GraphSearch implements Search{
                     State state = node.state.getActionResult(action);
 
                     if(!closedList.contains((state))) {
-                        Node newNode = new Node(node, action, state, -1);
-//                        newNode.g = node.g + action.cost(node, newNode);
+                        Node newNode = new Node(node, action, state, -1, 0, 0);
+                        newNode.g = node.g + action.cost(node, newNode);
                         frontier.add(newNode);
                         closedList.add(state);
                     }

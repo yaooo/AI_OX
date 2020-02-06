@@ -1,16 +1,21 @@
 package search;
 
-import java.util.LinkedList;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
-public class BreadthFirstFrontier implements Frontier {
+public class BestFirstFrontier implements Frontier{
 
-    LinkedList<Node> frontier;
     private int maxNodeInList;
     private int nodeGenerated;
     private long timer;
+    private PriorityQueue<Node> frontier;
+    public BestFirstFrontier(){
+        frontier = new PriorityQueue<>(1000, new Comparator<Node>() {
+            public int compare(Node n1, Node n2){
+                return Integer.compare(n1.g, n2.g);
+            }
 
-    public BreadthFirstFrontier(){
-        frontier = new LinkedList<>();
+        });
         maxNodeInList = 0;
         nodeGenerated = 0;
         this.timer = System.currentTimeMillis();
@@ -25,7 +30,6 @@ public class BreadthFirstFrontier implements Frontier {
     }
 
     public boolean add(Node node){
-
         boolean t = this.frontier.add(node);
         if(t) {
             this.increaseNodeGenerated();
@@ -35,11 +39,11 @@ public class BreadthFirstFrontier implements Frontier {
     }
 
     public Node remove(){
-        return this.frontier.poll();
+        return this.frontier.remove();
     }
 
     public String getType(){
-        return "Breadth First Search";
+        return "Best First Search";
     }
 
     public boolean isEmpty(){
@@ -59,7 +63,7 @@ public class BreadthFirstFrontier implements Frontier {
     }
 
     public void compareAndSetMaxNode(int t){
-        this.maxNodeInList = Math.max(t, getMaxNodeInList());
+        this.maxNodeInList = Math.max(t, maxNodeInList);
     }
 
     public void increaseNodeGenerated(){
