@@ -26,7 +26,7 @@ public class Node {
 
 	public Node(Node parent, Action action, State state, int depth, int value, int g) {
 		this(parent, action, state, depth, value);
-		this.g = g;
+		this.g = (parent == null ? 0 : parent.g) + (action == null ? 0 : action.getCost());
 	}
 
 }

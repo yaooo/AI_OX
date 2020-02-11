@@ -8,7 +8,9 @@ public class BestFirstFrontier implements Frontier{
     private int maxNodeInList;
     private int nodeGenerated;
     private long timer;
-    private PriorityQueue<Node> frontier;
+    public PriorityQueue<Node> frontier;
+
+
     public BestFirstFrontier(){
         frontier = new PriorityQueue<>(1000, new Comparator<Node>() {
             public int compare(Node n1, Node n2){

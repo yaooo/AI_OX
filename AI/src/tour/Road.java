@@ -13,7 +13,7 @@ public class Road implements Action {
 		this.targetCity = targetCity;
 		this.length = length;
 	}
-	public int cost(Node n, Node n1) {
+	public int getCost(){
 		return length;
 	}
 }

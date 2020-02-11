@@ -14,5 +14,5 @@ public enum Movement implements Action {
 		this.deltaColumn = deltaColumn;
 	}
 
-	public int cost(Node t1, Node t2){return 1;}
+	public int getCost(){return 1;}
 }

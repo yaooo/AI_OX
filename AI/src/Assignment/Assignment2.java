@@ -8,26 +8,6 @@ import tour.*;
 
 public class Assignment2 {
     public static void main(String[] args){
-
-        /* Tour */
-        System.out.println("This is a demonstration of searches on Romania tour\n");
-        Cities romania = SetUpRomania.getRomaniaMapSmall();
-        City startCity = romania.getState("Bucharest");
-
-        GoalTest goalTest = new TourGoalTest(romania.getAllCities(), startCity);
-        Node root = new Node(null, null, new TourState(startCity), 0);
-        BestFirstFrontier bfs = new BestFirstFrontier();
-
-        Search bfsGraph = new GraphSearch(bfs);
-        Search bfsTree = new TreeSearch(bfs);
-
-//        bfsGraph.findSol(root, goalTest);
-//        bfsTree.findSol(root, goalTest);
-
-        // force gc, to free some space
-        System.gc();
-
-
         /* Puzzle */
         System.out.println("\n\nThis is a demonstration of searches on 8-puzzle\n");
         Tiles initialConfiguration = new Tiles(new int[][] {
@@ -36,12 +16,34 @@ public class Assignment2 {
                 { 5, 0, 6 }
         });
 
+
+        BestFirstFrontier bfs = new BestFirstFrontier();
+
+        Frontier bfs1 = new BreadthFirstFrontier();
+        Frontier dfs = new DepthFirstFrontier();
+
+        Search bfsGraph = new GraphSearch(bfs);
+        Search bfsTree = new TreeSearch(bfs);
+
+
+        Search bfs1Graph = new GraphSearch(bfs1);
+        Search bfs1Tree = new TreeSearch(bfs1);
+
+
         GoalTest goalTest1 = new TilesGoalTest();
 
         Node root1 = new Node(null, null, initialConfiguration, 0);
 
-        Node sol = bfsGraph.findSol(root1, goalTest1);
         bfsTree.findSol(root1, goalTest1);
-        new NPuzzlePrinting().printSolution(sol);
+
+        Node sol = bfsGraph.findSol(root1, goalTest1);
+
+
+        bfs1Graph.findSol(root1, goalTest1);
+        bfs1Tree.findSol(root1, goalTest1);
+
+
+//        new NPuzzlePrinting().printSolution(sol);
+
     }
 }

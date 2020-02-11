@@ -3,7 +3,7 @@ package search;
 import java.util.HashSet;
 public class GraphSearch implements Search{
 
-    private Frontier frontier;
+    public Frontier frontier;
     private HashSet<State> closedList;
     private String Type;
     public GraphSearch(Frontier f){
@@ -16,7 +16,7 @@ public class GraphSearch implements Search{
     public Node findSol(Node init, GoalTest goalTest) {
         frontier.clear();
         closedList.clear();
-
+        int count = 0;
         frontier.add(init);
         closedList.add(init.state);
         PrintStats.printSearchType(this.Type);
@@ -31,9 +31,13 @@ public class GraphSearch implements Search{
                     State state = node.state.getActionResult(action);
 
                     if(!closedList.contains((state))) {
+                        if(count++ < 100)
+                            System.out.println("" + node.g);
+
                         Node newNode = new Node(node, action, state, -1, 0, 0);
-                        newNode.g = node.g + action.cost(node, newNode);
+
                         frontier.add(newNode);
+
                         closedList.add(state);
                     }
                 }
