@@ -2,6 +2,7 @@ package tour;
 
 import java.lang.reflect.Array;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -9,8 +10,8 @@ import search.Action;
 import search.State;
 
 public class TourState implements State {
-	protected final Set<City> visitedCities;
-	protected final City currentCity;
+	final Set<City> visitedCities;
+	final City currentCity;
 	
 	public TourState(City startCity) {
 		this.visitedCities = Collections.emptySet();
