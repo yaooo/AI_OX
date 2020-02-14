@@ -28,13 +28,13 @@ public class Assignment1 {
         dfsGraph.findSol(root, goalTest);
         bfsTree.findSol(root, goalTest);
         idfs.findSol(root, goalTest);
-//        dfsTree.findSol(root, goalTest);
+        dfsTree.findSol(root, goalTest);
 
         // force gc, to free some space
         System.gc();
 
         /* Puzzle */
-        System.out.println("\n\nThis is a demonstration of breadth-first tree search on 8-puzzle\n");
+        System.out.println("\n\nThis is a demonstration of searches on 8-puzzle\n");
         Tiles initialConfiguration = new Tiles(new int[][] {
                 { 7, 4, 2 },
                 { 8, 1, 3 },
@@ -48,7 +48,7 @@ public class Assignment1 {
         dfsGraph.findSol(root1, goalTest1);
         bfsTree.findSol(root1, goalTest1);
         idfs.findSol(root1, goalTest1);
-//        dfsTree.findSol(root1, goalTest1);
+        dfsTree.findSol(root1, goalTest1);
         new NPuzzlePrinting().printSolution(sol);
     }
 }

@@ -20,6 +20,10 @@ Maximum number of nodes stored on the frontier: 1473871
 Performed DFS Graph Search:
 Total number of nodes generated: 34266
 Maximum number of nodes stored on the frontier: 14480
+
+Performed DFS Tree Search:
+Time out(30 seconds limit).
+Performed DFS Tree Search, failed to find the solution.
 0: start
 
 -------------
@@ -178,10 +182,6 @@ Maximum number of nodes stored on the frontier: 186
 Performed Breadth First Search Tree Search:
 Total number of nodes generated: 75973
 Maximum number of nodes stored on the frontier: 44217
-
-Performed Iterative Deepening Tree Search:
-Total number of nodes generated: 2651
-Maximum number of nodes stored on the frontier: 25
 
 Performed DFS Tree Search:
 Time out(30 seconds limit).

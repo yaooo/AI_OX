@@ -43,17 +43,12 @@ public class Assignment2 {
         Search dfsGraph = new GraphSearch(dfs);
         Search dfsTree = new TreeSearch(dfs);
 
-        // iterative dfs
-        IterativeDeepeningTreeSearch idfs = new IterativeDeepeningTreeSearch();
-
-
         Node sol = bfsGraph.findSol(root, goalTest);
         bfsTree.findSol(root, goalTest);
 
         bfs1Graph.findSol(root, goalTest);
         bfs1Tree.findSol(root, goalTest);
 
-        idfs.findSol(root, goalTest);
         dfsTree.findSol(root, goalTest);
         dfsGraph.findSol(root, goalTest);
 
@@ -91,9 +86,6 @@ public class Assignment2 {
         Search dfsGraph = new GraphSearch(dfs);
         Search dfsTree = new TreeSearch(dfs);
 
-        // iterative dfs
-        IterativeDeepeningTreeSearch idfs = new IterativeDeepeningTreeSearch();
-
         GoalTest goalTest1 = new TilesGoalTest();
 
         Node root1 = new Node(null, null, initialConfiguration, 0, 0, 0);
@@ -107,7 +99,6 @@ public class Assignment2 {
         dfsGraph.findSol(root1, goalTest1);
         dfsTree.findSol(root1, goalTest1);
 
-        idfs.findSol(root1, goalTest1);
         // Taking to long
         new NPuzzlePrinting().printSolution(sol);
     }
