@@ -91,22 +91,23 @@ public class Assignment2 {
         Search dfsGraph = new GraphSearch(dfs);
         Search dfsTree = new TreeSearch(dfs);
 
+        // iterative dfs
+        IterativeDeepeningTreeSearch idfs = new IterativeDeepeningTreeSearch();
 
         GoalTest goalTest1 = new TilesGoalTest();
 
         Node root1 = new Node(null, null, initialConfiguration, 0, 0, 0);
 
         Node sol = bfsGraph.findSol(root1, goalTest1);
-
         bfsTree.findSol(root1, goalTest1);
-
 
         bfs1Graph.findSol(root1, goalTest1);
         bfs1Tree.findSol(root1, goalTest1);
 
         dfsGraph.findSol(root1, goalTest1);
+        dfsTree.findSol(root1, goalTest1);
 
-        //dfsTree.findSol(root1, goalTest1);
+        idfs.findSol(root1, goalTest1);
         // Taking to long
         new NPuzzlePrinting().printSolution(sol);
     }
