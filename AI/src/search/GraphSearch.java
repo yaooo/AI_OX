@@ -30,15 +30,11 @@ public class GraphSearch implements Search{
                 for(Action action: node.state.getApplicableActions()){
                     State state = node.state.getActionResult(action);
 
-                    if(!closedList.contains((state))) {
-                        if(count++ < 100)
-                            System.out.println("" + node.g);
-
+                    if(closedList.add((state))) {
                         Node newNode = new Node(node, action, state, -1, 0, 0);
-
+                        newNode.value += node.g;
                         frontier.add(newNode);
 
-                        closedList.add(state);
                     }
                 }
             }

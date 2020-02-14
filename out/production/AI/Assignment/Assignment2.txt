@@ -1,0 +1,2 @@
+The Greedy Best First search and the Breadth First Search should not be a significant difference, because we do not have a good cost function.
+Essentially, the Greedy Best First search behaves like Breadth First Search, as the cost always increases by 1 for each state.

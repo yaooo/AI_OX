@@ -1,5 +1,6 @@
 package Assignment;
 
+import npuzzle.MisplacedTiles;
 import npuzzle.NPuzzlePrinting;
 import npuzzle.Tiles;
 import npuzzle.TilesGoalTest;
@@ -16,34 +17,42 @@ public class Assignment2 {
                 { 5, 0, 6 }
         });
 
-
-        BestFirstFrontier bfs = new BestFirstFrontier();
-
+        // frontiers
+        BestFirstFrontier bfs = new BestFirstFrontier(new MisplacedTiles());
         Frontier bfs1 = new BreadthFirstFrontier();
         Frontier dfs = new DepthFirstFrontier();
 
+
+        // bestfirst
         Search bfsGraph = new GraphSearch(bfs);
         Search bfsTree = new TreeSearch(bfs);
 
-
+        // breadthfirst
         Search bfs1Graph = new GraphSearch(bfs1);
         Search bfs1Tree = new TreeSearch(bfs1);
+
+        // dfs
+        Search dfsGraph = new GraphSearch(dfs);
+        Search dfsTree = new TreeSearch(dfs);
 
 
         GoalTest goalTest1 = new TilesGoalTest();
 
-        Node root1 = new Node(null, null, initialConfiguration, 0);
-
-        bfsTree.findSol(root1, goalTest1);
+        Node root1 = new Node(null, null, initialConfiguration, 0, 0, 0);
 
         Node sol = bfsGraph.findSol(root1, goalTest1);
+
+        bfsTree.findSol(root1, goalTest1);
 
 
         bfs1Graph.findSol(root1, goalTest1);
         bfs1Tree.findSol(root1, goalTest1);
 
+        dfsGraph.findSol(root1, goalTest1);
 
-//        new NPuzzlePrinting().printSolution(sol);
+        //dfsTree.findSol(root1, goalTest1);
+        // Taking to long
+        new NPuzzlePrinting().printSolution(sol);
 
     }
 }

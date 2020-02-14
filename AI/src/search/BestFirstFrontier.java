@@ -9,18 +9,19 @@ public class BestFirstFrontier implements Frontier{
     private int nodeGenerated;
     private long timer;
     public PriorityQueue<Node> frontier;
+    private NodeFunction f;
 
-
-    public BestFirstFrontier(){
-        frontier = new PriorityQueue<>(1000, new Comparator<Node>() {
-            public int compare(Node n1, Node n2){
-                return Integer.compare(n1.g, n2.g);
+    public BestFirstFrontier(NodeFunction f){
+        Comparator<Node> comparator = new Comparator<Node>() {
+            @Override
+            public int compare(Node s1, Node s2) {
+                return s1.value - s2.value;
             }
+        };
+        frontier = new PriorityQueue<>(comparator);
 
-        });
-        maxNodeInList = 0;
-        nodeGenerated = 0;
-        this.timer = System.currentTimeMillis();
+        this.f = f;
+        clear();
     }
 
 
@@ -32,8 +33,10 @@ public class BestFirstFrontier implements Frontier{
     }
 
     public boolean add(Node node){
+        node.value += f.cost(node);
         boolean t = this.frontier.add(node);
         if(t) {
+//            if(maxNodeInList ==1000) System.out.println("xxxxx");
             this.increaseNodeGenerated();
             this.compareAndSetMaxNode(frontier.size());
         }

@@ -52,6 +52,9 @@ public class Tiles implements State {
 	public int getTile(int row, int column) {
 		return tiles[row * width + column];
 	}
+	public int[] getTiles(){
+		return tiles;
+	}
 	public Set<Action> getApplicableActions() {
 		Set<Action> actions = new LinkedHashSet<Action>();
 		for (Movement movement : Movement.values()) {

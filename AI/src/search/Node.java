@@ -28,5 +28,4 @@ public class Node {
 		this(parent, action, state, depth, value);
 		this.g = (parent == null ? 0 : parent.g) + (action == null ? 0 : action.getCost());
 	}
-
 }
