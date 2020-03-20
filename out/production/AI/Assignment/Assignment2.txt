@@ -1,3 +1,12 @@
+// Compare Efficiency
+In general, graph search performs better than tree search in terms of node generated because graph search stores the visited nodes and terminates the current search if it encounters visited nodes. BFS guarantees a solution but it tends to generate many "useless" nodes. DFS could sometimes outperform BFS, but it is sometimes unreliable especially for an infinite graph. In addition, DFS using tree search takes too long to complete, and the iterative deepening tree search provides a good way to compensate it. 
+
+In addition, adding heuristic function seems to reduce the number of nodes generated, depending on how well we design the heuristic function in the first place. For complex cases, having an estimator does help a lot.
+
+The details of the tour search and the 8-puzzle game are listed below (the numerical representation of "total number of nodes generated" && "max number of node stored on the frontier".)
+
+////////////////////////////////////////////////////////////////////////////////////
+
 This is a demonstration of searches on 8-puzzle
 
 
