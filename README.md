@@ -1,4 +1,4 @@
-# AI_OX
+# Artificial Intelligence: 2019-2020
 * Assignment 1: Implement the following...
   * breadth-first tree search
   * breadth-first graph search
